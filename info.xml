@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<libros>
+
+	<libro id="hi1234567">
+		
+		<titulo>Romeo y Julieta</titulo>
+		
+		<autor>#57</autor>
+
+		<publicacion>04/07/1597</publicacion>
+
+		<genero>Tragedia romántica</genero>
+
+	</libro>
+
+	<libro id="tr3867589">
+		
+		<titulo>It</titulo>
+		
+		<autor>#56</autor>
+		
+		<publicacion>15/09/1986</publicacion>
+
+		<genero>Terror</genero>
+
+	</libro>
+
+	<libro id="hi1234567">
+		
+		<titulo>Vida de Jesucristo</titulo>
+		
+		<autor>#96</autor>
+
+		<publicacion>27/01/1842</publicacion>
+
+		<genero>Tragedia</genero>
+
+	</libro>
+
+	<libro id="tr3867589">
+		
+		<titulo>Cien años de soledad</titulo>
+		
+		<autor>#39</autor>
+		
+		<publicacion>15/10/1967</publicacion>
+
+		<genero>Drama</genero>
+
+	</libro>
+
+	<libro id="tr3867589">
+		
+		<titulo>Don Quijote</titulo>
+		
+		<autor>#10</autor>
+		
+		<publicacion>05/12/1605</publicacion>
+
+		<genero>Farsa</genero>
+
+	</libro>
+
+
+
+</libros>
+
+<autores>
+
+	<autor id="57">
+
+		<nombre>William Shakespeare</nombre>
+
+		<nacionalidad>Británico</nacionalidad>
+
+		<nacimiento>11/04/1564</nacimiento>
+
+	</autor>
+
+	<autor id="56">
+		
+		<nombre>Stephen King</nombre>
+
+		<nacionalidad>Americano</nacionalidad>
+
+		<nacimiento>05/07/1954</nacimiento>
+
+	</autor>
+
+	<autor id="96">
+
+		<nombre>Charles Dickens</nombre>
+
+		<nacionalidad>Finlandés</nacionalidad>
+
+		<nacimiento>01/01/1812</nacimiento>
+
+	</autor>
+
+	<autor id="39">
+		
+		<nombre>Gabriel García Márquez</nombre>
+
+		<nacionalidad>Español/nacionalidad>
+
+		<nacimiento>19/11/1927</nacimiento>
+
+	</autor>
+
+	<autor id="10">
+		
+		<nombre>Miguel de Cervantes</nombre>
+
+		<nacionalidad>Español</nacionalidad>
+
+		<nacimiento>15/05/1547</nacimiento>
+
+	</autor>
+
+</autores>
+
