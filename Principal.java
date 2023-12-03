@@ -2,7 +2,6 @@ package biblioteca;
 
 import java.util.Scanner;
 //Importar otras clases necesarias
-import java.util.Scanner;
 
 public class Principal {
     private static Scanner scanner = new Scanner(System.in);
