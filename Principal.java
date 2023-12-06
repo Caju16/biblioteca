@@ -1,35 +1,10 @@
 package biblioteca;
 
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
-
-//Importar otras clases necesarias
 public class Principal {
 		private static Scanner scanner = new Scanner(System.in);
-		private static GestorFicheros gestorFicheros = new GestorFicheros();
 		public static void main(String[] args) {
 				boolean salir = false;
 						while (!salir) {
@@ -40,15 +15,12 @@ public class Principal {
 							gestionarLibros();
 							break;
 						case 2:
-							//Gestionar autores
-							//gestionarAutores();
+							gestionarAutores();
 							break;
 						case 3:
-							//Gestionar préstamos
-							//gestionarPrestamos();
+							gestionarPrestamos();
 							break;
 						case 4:
-							//Exportar/Importar datos con XML
 							gestionarExportImportXML();
 							break;
 						case 5:
@@ -88,37 +60,25 @@ public class Principal {
 					Libro.crearLibro();
 					break;
 				case 2:
-					Libro.listarLibros();
+					GestorFicheros.listarLibros();
 					break;
 				case 3:
-					cambiarLibro();
+					GestorFicheros.cambiarLibro();
 					break;
 				case 4:
-					borrarLibro();
+					GestorFicheros.borrarLibro();
 					break;
 				case 5:
 					saliendo = true;
 					System.out.println("SALIENDO");
 					break;
 				default:
-					System.out.println("OPCION NO VALIDA");
+					System.out.println("OPCIÓN NO VÁLIDA");
 				}
 			}
-		}
+		}		
 		
-		private static void borrarLibro() {
-			// TODO Auto-generated method stub
-			
-		}
-		private static void cambiarLibro() {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		
-
-		
-		/*private static void gestionarAutores() {
+		private static void gestionarAutores() {
 			boolean saliendo = false;
 			while (!saliendo) {
 				System.out.println("GESTIÓN DE AUTORES");
@@ -133,61 +93,50 @@ public class Principal {
 
 				switch (opcion2) {
 				case 1:
-					crearLibro();
+					Autor.crearAutor();
 					break;
 				case 2:
-					listarLibro();
+					GestorFicheros.listarAutor();
 					break;
 				case 3:
-					cambiarLibro();
+					GestorFicheros.cambiarAutor();
 					break;
 				case 4:
-					borrarLibro();
+					GestorFicheros.borrarAutor();
 					break;
 				case 5:
 					saliendo = true;
 					System.out.println("SALIENDO");
 					break;
 				default:
-					System.out.println("OPCION NO VALIDA");
+					System.out.println("OPCIÓN NO VÁLIDA");
 				}
 			}
 		}
+		
 		private static void gestionarPrestamos() {
 			boolean saliendo = false;
 			while (!saliendo) {
 				System.out.println("GESTIÓN DE PRESTAMOS");
 				System.out.println("1. CREAR PRESTAMO");
-				System.out.println("2. LISTAR PRESTAMO");
-				System.out.println("3. CAMBIAR PRESTAMO");
-				System.out.println("4. BORRAR PRESTAMO");
-				System.out.println("5. VOLVER AL MENÚ PPAL ");
+				System.out.println("2. VOLVER AL MENÚ PPAL ");
 				System.out.print("Seleccione una opción: ");
 
 				int opcion2 = scanner.nextInt();
 
 				switch (opcion2) {
 				case 1:
-					crearLibro();
+					GestorFicheros.crearPrestamo();
 					break;
 				case 2:
-					listarLibro();
-					break;
-				case 3:
-					cambiarLibro();
-					break;
-				case 4:
-					borrarLibro();
-					break;
-				case 5:
 					saliendo = true;
 					System.out.println("SALIENDO");
 					break;
 				default:
-					System.out.println("OPCION NO VALIDA");
+					System.out.println("OPCIÓN NO VÁLIDA");
 				}
 			}
-		}*/
+		}
 		
 		private static void gestionarExportImportXML() {
 			boolean saliendo = false;
@@ -202,14 +151,71 @@ public class Principal {
 
 				switch (opcion2) {
 				case 1:
-					GestorFicheros.crearXML();
+					exportarXML();
 					break;
 				case 2:
-					Libro.listarLibros();
+					importarXML();
 					break;
 				case 3:
 					saliendo = true;
 					System.out.println("SALIENDO");
+					break;
+				default:
+					System.out.println("OPCION NO VALIDA");
+				}
+			}
+		}
+			
+
+		private static void exportarXML() {
+			boolean saliendo = false;
+			while (!saliendo) {
+				System.out.println("ELIGE EL ARCHIVO A EXPORTAR EN XML");
+				System.out.println("1. LIBROS");
+				System.out.println("2. AUTORES");
+				System.out.println("3. VOLVER ");
+				System.out.print("Seleccione una opción: ");
+
+				int opcion2 = scanner.nextInt();
+
+				switch (opcion2) {
+				case 1:
+					GestorFicheros.crearXMLLibros();
+					break;
+				case 2:
+					GestorFicheros.crearXMLAutores();
+					break;
+				case 3:
+					saliendo = true;
+					System.out.println("VOLVIENDO");
+					break;
+				default:
+					System.out.println("OPCION NO VALIDA");
+				}
+			}
+		}
+		
+		private static void importarXML() {
+			boolean saliendo = false;
+			while (!saliendo) {
+				System.out.println("ELIGE EL ARCHIVO A IMPORTAR DE XML");
+				System.out.println("1. LIBROS");
+				System.out.println("2. AUTORES");
+				System.out.println("3. VOLVER ");
+				System.out.print("Seleccione una opción: ");
+
+				int opcion2 = scanner.nextInt();
+
+				switch (opcion2) {
+				case 1:
+					GestorFicheros.importarXMLLibros();
+					break;
+				case 2:
+					GestorFicheros.importarXMLAutores();
+					break;
+				case 3:
+					saliendo = true;
+					System.out.println("VOLVIENDO");
 					break;
 				default:
 					System.out.println("OPCION NO VALIDA");

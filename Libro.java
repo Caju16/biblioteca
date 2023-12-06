@@ -1,19 +1,10 @@
 package biblioteca;
 
-import java.io.ByteArrayOutputStream;
-
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Libro implements Serializable {
+	private static final Scanner scanner = new Scanner(System.in);
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String titulo;
@@ -28,6 +19,14 @@ public class Libro implements Serializable {
 		this.autor = autor;
 		this.publicacion = publicacion;
 		this.genero = genero;
+	}
+	
+	public Libro() {
+		id=0;
+		titulo=" ";
+		autor=" ";
+		publicacion=" ";
+		genero=" ";
 	}
 
 	public int getId() {
@@ -54,6 +53,10 @@ public class Libro implements Serializable {
 		this.autor = autor;
 	}
 
+	public void setPublicacion(String publicacion) {
+		this.publicacion = publicacion;
+	}
+	
 	public String getPublicacion() {
 		return publicacion;
 	}
@@ -71,9 +74,6 @@ public class Libro implements Serializable {
 	}
 	
 	public static void crearLibro() {
-			Scanner scanner = new Scanner(System.in);
-
-			
 			System.out.println("Introduce el id del libro \n");
 			int id_l = scanner.nextInt();
 
@@ -91,14 +91,8 @@ public class Libro implements Serializable {
 			
 			Libro nuevo = new Libro(id_l, titulo, autor, publicacion, genero);
 			
-			GestorFicheros.nuevoLibro(nuevo);
-
-			
+			GestorFicheros.nuevoLibro(nuevo);		
 			}
-	
-	public static void listarLibros() {
-        GestorFicheros.listarLibros();
-    }
+
 
 }
-
