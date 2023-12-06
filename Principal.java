@@ -2,10 +2,20 @@ package biblioteca;
 
 import java.util.Scanner;
 
+// CUANDO INICIA EL PROGRAMA, SE ABRE EL MENÚ PARA GESTIONAR LIBROS, AUTORES, PRÉSTRAMOS Y LOS ARCHIVOS XML
 
 public class Principal {
 		private static Scanner scanner = new Scanner(System.in);
 		public static void main(String[] args) {
+			
+			/*
+			SE DECLARA UNA VARIABLE BOOLEANA PARA EL SWITCH
+			DE FORMA QUE SI EL USUARIO PULSA 5, LA BOOLEANA
+			PASA A TRUE Y TERMINA EL PROGRAMA 
+			*/
+			
+			//EL SWITCH SE VA REPITIENDO MIENTRAS QUE LA BOOLEANA SEA FALSE
+			
 				boolean salir = false;
 						while (!salir) {
 							mostrarMenu();
@@ -32,6 +42,8 @@ public class Principal {
 				}
 		}
 		
+		// MOSTRARMENU() DA LAS OPCIONES AL USUARIO DENTRO DEL SWITCH ANTERIOR
+		
 		private static void mostrarMenu() {
 			System.out.println("Bienvenido al Sistema de Gestión de Biblioteca");
 			System.out.println("1. Gestionar Libros");
@@ -41,6 +53,13 @@ public class Principal {
 			System.out.println("5. Salir");
 			System.out.print("Seleccione una opción: ");
 		}
+		
+		/* 
+			SI EL USUARIO PULSA 1 EN EL SWITCH DE LA CLASE MAIN,
+			VA AL SIGUIENTE MÉTODO QUE ES OTRO
+			SWITCH CON EL MISMO FUNCIONAMIENTO QUE EL MAIN, PERO GESTIONARLIBROS()
+			ES PARA GESTIONAR LIBROS 
+		*/
 		
 		private static void gestionarLibros() {
 			boolean saliendo = false;
@@ -57,18 +76,33 @@ public class Principal {
 
 				switch (opcion2) {
 				case 1:
+					
+					//EL PROGRAMA VA A LA CLASE LIBRO Y BUSCA EL MÉTODO CREARLIBRO()
+					
 					Libro.crearLibro();
 					break;
 				case 2:
+					
+					//EL PROGRAMA VA A LA CLASE GESTORFICHEROS Y BUSCA EL MÉTODO LISTARLIBROS()
+					
 					GestorFicheros.listarLibros();
 					break;
 				case 3:
+					
+					//EL PROGRAMA VA A LA CLASE GESTORFICHEROS Y BUSCA EL MÉTODO CAMBIARLIBRO()
+					
 					GestorFicheros.cambiarLibro();
 					break;
 				case 4:
+					
+					//EL PROGRAMA VA A LA CLASE GESTORFICHEROS Y BUSCA EL MÉTODO BORRARLIBROS()
+					
 					GestorFicheros.borrarLibro();
 					break;
 				case 5:
+					
+					// EL PROGRAMA SALE
+					
 					saliendo = true;
 					System.out.println("SALIENDO");
 					break;
@@ -77,6 +111,13 @@ public class Principal {
 				}
 			}
 		}		
+		
+		/* 
+		 SI EL USUARIO PULSA 2 EN EL SWITCH DE LA CLASE MAIN, 
+		 VA AL SIGUIENTE MÉTODO QUE ES OTRO
+		 SWITCH CON EL MISMO FUNCIONAMIENTO QUE EL MAIN, PERO GESTIONARAUTORES()
+		 ES PARA GESTIONAR AUTORES 
+		*/
 		
 		private static void gestionarAutores() {
 			boolean saliendo = false;
@@ -92,6 +133,16 @@ public class Principal {
 				int opcion2 = scanner.nextInt();
 
 				switch (opcion2) {
+				
+				/*
+				  LO MISMO QUE EN EL SWITCH DE GESTIONARLIBROS(),
+				  SI PULSA 1, EL PROGRAMA VA A LA CLASE AUTOR Y BUSCA
+				  EL MÉTODO CORRESPONDIENTE, SI PULSA 2, 3 O 4, EL
+				  EL PROGRAMA VA A LA CLASE GESTORFICHEROS Y BUSCA EL
+				  MÉTODO QUE CORRESPONDA, SI PULSA 5, EL SWITCH TERMINA
+				  Y VUELVE AL MENÚ DE GESTIÓN PRINCIPAL
+				 */
+				
 				case 1:
 					Autor.crearAutor();
 					break;
@@ -114,6 +165,13 @@ public class Principal {
 			}
 		}
 		
+		/* 
+		 SI EL USUARIO PULSA 3 EN EL SWITCH DE LA CLASE MAIN,
+		 VA AL SIGUIENTE MÉTODO QUE ES OTRO
+		 SWITCH CON EL MISMO FUNCIONAMIENTO QUE EL MAIN, PERO ESTE
+		 ES PARA GESTIONAR PRÉSTAMOS 
+		*/
+		
 		private static void gestionarPrestamos() {
 			boolean saliendo = false;
 			while (!saliendo) {
@@ -123,6 +181,13 @@ public class Principal {
 				System.out.print("Seleccione una opción: ");
 
 				int opcion2 = scanner.nextInt();
+				
+				/*
+				  LO MISMO QUE EN EL SWITCH DE GESTIONARLIBROS(),
+				  SI PULSA 1, EL PROGRAMA VA A LA CLASE GESTORFICHEROS Y BUSCA
+				  EL MÉTODO CORRESPONDIENTE, SI PULSA 2, EL SWITCH TERMINA
+				  Y VUELVE AL MENÚ DE GESTIÓN PRINCIPAL
+				 */
 
 				switch (opcion2) {
 				case 1:
@@ -137,6 +202,13 @@ public class Principal {
 				}
 			}
 		}
+		
+		/* 
+		 SI EL USUARIO PULSA 4 EN EL SWITCH DE LA CLASE MAIN,
+		 VA AL SIGUIENTE MÉTODO QUE ES OTRO
+		 SWITCH CON UN FUNCIONAMIENTO SIMILAR QUE EL MAIN, PERO ESTE
+		 ES PARA GESTIONAR ARCHIVOS XML
+		*/
 		
 		private static void gestionarExportImportXML() {
 			boolean saliendo = false;
@@ -165,6 +237,13 @@ public class Principal {
 				}
 			}
 		}
+		
+		
+		/*
+		  SI EL USUARIO PULSA 1 EN GESTIONAREXPORIMPORTXML(),
+		  SE ABRE EL MENÚ DE EXPORTARXML(), QUE SIRVE PARA SABER
+		  SI EL USUARIO QUIERE EXPORTAR LIBROS O AUTORES.
+		*/
 			
 
 		private static void exportarXML() {
@@ -177,6 +256,13 @@ public class Principal {
 				System.out.print("Seleccione una opción: ");
 
 				int opcion2 = scanner.nextInt();
+				
+				/*
+					EN EL SIGUIENTE SWITCH, SI EL USUARIO PULSA 1,
+					VA A LA CLASE GESTORFICHEROS Y VA AL MÉTODO DE
+					EXPORTAR LIBROS, Y SI PULSA 2, BUSCA EL MÉTODO
+					DE EXPORTAR AUTORES DENTRO DE LA MISMA CLASE.
+				*/
 
 				switch (opcion2) {
 				case 1:
@@ -195,6 +281,13 @@ public class Principal {
 			}
 		}
 		
+		
+		/*
+		  SI EL USUARIO PULSA 2 EN GESTIONAREXPORIMPORTXML(),
+		  SE ABRE EL MENÚ DE IMPORTARRXML(), QUE SIRVE PARA SABER
+		  SI EL USUARIO QUIERE IMPORTAR LIBROS O AUTORES.
+		*/
+		
 		private static void importarXML() {
 			boolean saliendo = false;
 			while (!saliendo) {
@@ -205,6 +298,13 @@ public class Principal {
 				System.out.print("Seleccione una opción: ");
 
 				int opcion2 = scanner.nextInt();
+				
+				/*
+					EN EL SIGUIENTE SWITCH, SI EL USUARIO PULSA 2,
+					VA A LA CLASE GESTORFICHEROS Y VA AL MÉTODO DE
+					IMPORTAR LIBROS, Y SI PULSA 2, BUSCA EL MÉTODO
+					DE IMPORTAR AUTORES DENTRO DE LA MISMA CLASE.
+				 */
 
 				switch (opcion2) {
 				case 1:
